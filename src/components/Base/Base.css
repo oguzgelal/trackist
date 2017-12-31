@@ -1,0 +1,14 @@
+@value theme: '../../themes/default.css';
+
+@value pageBackground from theme;
+
+.mainLayout {
+  min-height: 100vh;
+  background-color: pageBackground;
+}
+
+.contents {
+  overflow: initial;
+  min-height: 100vh;
+  background-color: pageBackground;
+}

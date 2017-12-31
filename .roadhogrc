@@ -1,0 +1,24 @@
+{
+  "entry": "src/index.js",
+  "autoprefixer": {
+    "browsers": [
+      "> 5%"
+    ]
+  },
+  "extraBabelPlugins": [
+    [ "import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }]
+  ],
+  "env": {
+    "development": {
+      "extraBabelPlugins": [
+        "dva-hmr",
+        "transform-runtime"
+      ]
+    },
+    "production": {
+      "extraBabelPlugins": [
+        "transform-runtime"
+      ]
+    }
+  }
+}

@@ -1,0 +1,54 @@
+@value theme: '../../themes/default.css';
+
+@value colorRed from theme;
+
+.timeline {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+.timezone {
+  border-top: 1px solid #ecebec;
+}
+
+.timezone:last-of-type {
+  border-bottom: 1px solid #ecebec;
+}
+
+.timezones {
+}
+
+.nowWrapper {
+  position: relative;
+  height: 38px;
+}
+
+.nowLine {
+  position: absolute;
+  left: calc(50% - 1px);
+  width: 2px;
+  height: 38px;
+  background-color: colorRed;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.nowTime {
+  position: absolute;
+  top: 0;
+  left: calc(50% + 8px);
+  height: 20px;
+  line-height: 20px;
+  font-size: 15pt;
+  color: colorRed;
+}
+
+.nowTimezone {
+  position: absolute;
+  top: 18px;
+  left: calc(50% + 8px);
+  font-size: 6pt;
+  margin-left: 2px;
+  color: colorRed;
+}
