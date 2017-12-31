@@ -2,9 +2,10 @@
   "private": true,
   "scripts": {
     "start": "roadhog server",
-    "build": "roadhog build",
+    "build": "roadhog build && npm run create-redirecs",
     "lint": "eslint --ext .js src test",
-    "precommit": "npm run lint"
+    "precommit": "npm run lint",
+    "create-redirecs": "echo \"/*    /index.html   200\" > dist/_redirects"
   },
   "engines": {
     "install-node": "6.11.1"
