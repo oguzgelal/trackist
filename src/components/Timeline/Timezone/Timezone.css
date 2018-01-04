@@ -12,11 +12,16 @@
   position: absolute;
   top: 0;
   left: 0.8em;
-  height: timezoneHeight;
-  line-height: timezoneHeight;
+  height: 100%;
   font-size: 9pt;
   color: rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.timezoneLabelCurrent {
+  color: colorRed !important;
 }
 
 .timezone:hover {
@@ -28,11 +33,11 @@
   color: rgba(0, 0, 0, 0.6);
 }
 
-.timezoneMidpoint {
+.timezoneNowline {
   position: absolute;
   top: -1px;
-  left: calc(50% - 1px);
   width: 2px;
-  height: calc(timezoneHeight + 2px);
+  height: calc(100% + 2px);
   background-color: colorRed;
+  transition: all 0.3s linear;
 }
