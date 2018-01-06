@@ -28,5 +28,9 @@
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true
     }
-  }
+  },
+  "globals": {
+    "window": false,
+    "moment": false
+    }
 }

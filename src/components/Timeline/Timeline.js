@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import momentTimezone from 'moment-timezone';
-import { Popover, Button, Radio } from 'antd';
+import { Radio } from 'antd';
 
 import settings from '../../config/settings';
 import Timezone from './Timezone/Timezone';
 import styles from './Timeline.css';
-import { parseTimezoneName } from '../../utils/misc';
+import { findPercentLocation } from '../../utils/misc';
 
 
 class Timeline extends React.Component {
@@ -36,63 +36,54 @@ class Timeline extends React.Component {
     this.refreshTimelineStart();
   }
 
+  setTimelineAdjust(e) {
+    const s = this.state;
+    s.adjustBy = e.target.value;
+    s.now = moment().unix();
+    s.timelineStart = moment().startOf(s.adjustBy).unix();
+    s.timelineEnd = moment().endOf(s.adjustBy).unix();
+    this.setState(s);
+  }
+
   refreshTimelineStart() {
     setInterval(() => {
-      let s = this.state;
+      const s = this.state;
       s.now = moment().unix();
       if (this.state.adjust) {
         s.timelineStart = moment().startOf(s.adjustBy).unix();
         s.timelineEnd = moment().endOf(s.adjustBy).unix();
       }
       this.setState(s);
-    }, 1000)
-  }
-
-  setTimelineAdjust(e) {
-    let s = this.state;
-    s.adjustBy = e.target.value;
-    s.now = moment().unix();
-    s.timelineStart = moment().startOf(s.adjustBy).unix();
-    s.timelineEnd = moment().endOf(s.adjustBy).unix();
-    this.setState(s)
-  }
-
-  calculateTimezoneHeight() {
-    return settings.TIMELINE_TIMEZONE_DEFAULT_HEIGHT - (settings.TIMELINE_TIMEZONE_REDUCE_BY_TIMEZONE * this.state.timezones.length);
-  }
-
-  calculateNowlineLocation() {
-    const { now, timelineStart, timelineEnd } = this.state;
-    return (now - timelineStart) / (timelineEnd - timelineStart) * 100;
+    }, 1000);
   }
 
   render() {
-
     const timezones = [
       <div className={styles.timezone} key="default-timezone">
         <Timezone
           current
-          nowlineLocation={this.calculateNowlineLocation()}
+          now={this.state.now}
           timelineStart={this.state.timelineStart}
           timelineEnd={this.state.timelineEnd}
-          height={this.calculateTimezoneHeight()}
+          adjustBy={this.state.adjustBy}
           code={moment.tz.guess()}
         />
-      </div>
+      </div>,
     ];
-    this.state.timezones.map(tz => {
+    this.state.timezones.map((tz) => {
       timezones.push(
         <div className={styles.timezone} key={tz}>
           <Timezone
+            now={this.state.now}
             timelineStart={this.state.timelineStart}
             timelineEnd={this.state.timelineEnd}
-            nowlineLocation={this.calculateNowlineLocation()}
-            height={this.calculateTimezoneHeight()}
+            adjustBy={this.state.adjustBy}
             code={tz}
           />
-        </div>
+        </div>,
       );
-    })
+      return tz;
+    });
 
     return (
       <div className={styles.timeline}>
@@ -105,6 +96,7 @@ class Timeline extends React.Component {
               <Radio.Button value="hour">Hour</Radio.Button>
               <Radio.Button value="day">Day</Radio.Button>
               <Radio.Button value="week">Week</Radio.Button>
+              <Radio.Button value="month">Month</Radio.Button>
             </Radio.Group>
           </div>
         </div>

@@ -1,27 +1,29 @@
 
-export const isLoggedIn = user => {
+export const isLoggedIn = (user) => {
   return true;
 };
 
 export const parseTimezoneName = (code, format = 'display') => {
   try {
-
     if (format === 'list') {
-      code = code.replace(new RegExp('/', 'g'), ' - ');
-      code = code.replace(new RegExp('_', 'g'), ' ');
-      return code;
+      let c = code;
+      c = code.replace(new RegExp('/', 'g'), ' - ');
+      c = code.replace(new RegExp('_', 'g'), ' ');
+      return c;
     }
 
     if (format === 'display') {
-      let parts = code.split('/');
+      const parts = code.split('/');
       let str = parts[parts.length - 1];
       str = str.replace(new RegExp('_', 'g'), ' ');
       return str;
     }
-
-  }
-  catch (e) {
+  } catch (e) {
     return code;
   }
+};
 
+export const findPercentLocation = (start, end, value) => {
+  const perc = (value - start) / (end - start);
+  return perc * 100;
 };

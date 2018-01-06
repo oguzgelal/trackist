@@ -1,0 +1,28 @@
+@value theme: '../../../themes/default.css';
+
+@value notchColor from theme;
+
+.notch {
+  position: absolute;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.notchLabel {
+  height: 10px;
+  font-size: 6pt;
+}
+.notchLabelSmall {
+  color: notchColor;
+}
+
+.notchLine {
+  bottom: 0;
+  width: 1px;
+  margin-left: -0.5px;
+  background-color: notchColor;
+}
+.notchLineSmall {
+}

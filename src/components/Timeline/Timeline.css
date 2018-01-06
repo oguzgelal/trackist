@@ -1,6 +1,7 @@
 @value theme: '../../themes/default.css';
 
 @value colorRed from theme;
+@value timelineBorderColor from theme;
 
 .timeline {
   position: relative;
@@ -10,11 +11,11 @@
 }
 
 .timezone {
-  border-top: 1px solid #ecebec;
+  border-top: 1px solid timelineBorderColor;
 }
 
 .timezone:last-of-type {
-  border-bottom: 1px solid #ecebec;
+  border-bottom: 1px solid timelineBorderColor;
 }
 
 .timezones {

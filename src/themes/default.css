@@ -7,4 +7,7 @@
 @value colorRed: #e74c3c;
 
 
-@value timezoneHeight: 35px;
+@value timezoneHeight: 25px;
+@value timezoneCurrentHeight: 30px;
+@value timelineBorderColor: #ecebec;
+@value notchColor: #dddddd;
