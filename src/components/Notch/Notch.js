@@ -11,8 +11,8 @@ const Notch = (props) => {
   if (props.type && props.type === 'full') { notchHeight = '100%'; }
 
   let transform = 'translateX(-50%)';
-  if (props.position < 5) { transform = 'translateX(5%)'; }
-  if (props.position > 95) { transform = 'translateX(-105%)'; }
+  if (props.position < 3) { transform = 'translateX(5%)'; }
+  if (props.position > 97) { transform = 'translateX(-105%)'; }
 
   return (
     <div

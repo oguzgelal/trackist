@@ -5,7 +5,7 @@ import momentTimezone from 'moment-timezone';
 import { Radio } from 'antd';
 
 import settings from '../../config/settings';
-import Timezone from './Timezone/Timezone';
+import Timezone from '../Timezone/Timezone';
 import styles from './Timeline.css';
 import { findPercentLocation } from '../../utils/misc';
 

@@ -2,6 +2,7 @@
   "parser": "babel-eslint",
   "extends": "airbnb",
   "rules": {
+    "brace-style": 0,
     "arrow-body-style": [0],
     "consistent-return": [0],
     "generator-star-spacing": [0],

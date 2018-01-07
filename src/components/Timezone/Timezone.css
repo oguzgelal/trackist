@@ -1,4 +1,4 @@
-@value theme: '../../../themes/default.css';
+@value theme: '../../themes/default.css';
 
 @value timezoneHeight from theme;
 @value timezoneCurrentHeight from theme;
@@ -17,13 +17,11 @@
   position: absolute;
   top: 0;
   left: 0;
-  padding: 0 1em;
+  padding: 0 0.2em;
   height: 100%;
   font-size: 7pt;
   color: rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
 }
 
 .timezoneLabelCurrent {
@@ -35,9 +33,7 @@
 }
 
 .timezone:hover .timezoneLabel {
-  padding: 0 1.2em;
   color: rgba(0, 0, 0, 0.6);
-  background-color: white;
   z-index: 9;
 }
 
@@ -50,4 +46,20 @@
   background-color: colorRed;
   transition: all 0.3s linear;
   z-index: 99;
+}
+
+.timezoneNowlineText {
+  font-size: 7pt;
+  padding: 0 5px;
+  height: 100%;
+  width: 100px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: colorRed;
+}
+.timezoneNowlineTextLeft {
+  transform: translateX(-100%);
+  justify-content: flex-end;
 }
