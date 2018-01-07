@@ -32,6 +32,8 @@ export default {
       mainLabelFormat: 'ddd',
       subHandle: 'hour',
       subLabelFormat: (m) => {
+        const v = parseInt(m.format('h'), 10);
+        if (v % 3 !== 0) { return null; }
         const val = m.format('ha');
         if (val === '12am' || val === '0') { return null; }
         return val;

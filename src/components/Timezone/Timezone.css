@@ -15,9 +15,9 @@
 
 .timezoneLabel {
   position: absolute;
-  top: 0;
+  top: 2px;
   left: 0;
-  padding: 0 0.2em;
+  padding: 0 0.4em;
   height: 100%;
   font-size: 7pt;
   color: rgba(0, 0, 0, 0.1);
@@ -44,7 +44,7 @@
   margin-left: -0.5px;
   height: calc(100% + 2px);
   background-color: colorRed;
-  transition: all 0.3s linear;
+  transition: all 0.3s ease;
   z-index: 99;
 }
 

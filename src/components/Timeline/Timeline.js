@@ -6,6 +6,7 @@ import { Radio } from 'antd';
 
 import settings from '../../config/settings';
 import Timezone from '../Timezone/Timezone';
+import Track from '../Track/Track';
 import styles from './Timeline.css';
 import { findPercentLocation } from '../../utils/misc';
 
@@ -15,7 +16,6 @@ class Timeline extends React.Component {
     super(props, context);
 
     window.moment = moment;
-    window.momentTimezone = momentTimezone;
 
     this.state = {
       adjust: true,
@@ -29,6 +29,13 @@ class Timeline extends React.Component {
         'America/Los_Angeles',
         'Europe/Istanbul',
       ],
+      tracks: [
+        {
+          id: 1,
+          startTime: 1515355200,
+          text: 'Working on Track.ist',
+        },
+      ],
     };
 
     this.setTimelineAdjust = this.setTimelineAdjust.bind(this);
@@ -37,7 +44,7 @@ class Timeline extends React.Component {
   }
 
   setTimelineAdjust(e) {
-    const s = this.state;
+    const s = Object.assign({}, this.state);
     s.adjustBy = e.target.value;
     s.now = moment().unix();
     s.timelineStart = moment().startOf(s.adjustBy).unix();
@@ -47,7 +54,7 @@ class Timeline extends React.Component {
 
   refreshTimelineStart() {
     setInterval(() => {
-      const s = this.state;
+      const s = Object.assign({}, this.state);
       s.now = moment().unix();
       if (this.state.adjust) {
         s.timelineStart = moment().startOf(s.adjustBy).unix();
@@ -85,9 +92,16 @@ class Timeline extends React.Component {
       return tz;
     });
 
+    const tracks = [];
+    this.state.tracks.map((track) => {
+      tracks.push(<Track track={track} key={track.id} />);
+      return track;
+    });
+
     return (
       <div className={styles.timeline}>
 
+        {/* header */}
         <div className={styles.timelineHeader}>
           <div className={styles.timelineTitle}>Trackist</div>
           <div className={styles.timelineSettings}>
@@ -104,6 +118,11 @@ class Timeline extends React.Component {
         {/* timezones */}
         <div className={styles.timezones}>
           {timezones}
+        </div>
+
+        {/* tracks */}
+        <div className={styles.tracks}>
+          {tracks}
         </div>
       </div>
     );
